@@ -1,0 +1,10 @@
+*.html~
+*.py~
+
+# python precompiled files:
+*.pyc
+*.pyo
+
+# files for logging
+*.log
+*.log~

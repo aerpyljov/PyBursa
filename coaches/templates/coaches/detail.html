@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+
+{% load staticfiles %}
+
+
+{% block title %}
+  Преподаватель
+{% endblock %}
+
+
+{% block main_content %}
+
+        <h2>
+
+        </h2>
+
+        <div>
+          <h4>
+            
+          </h4>
+        </div>
+
+        <h4>
+          {{ coach.full_name }}
+        </h4>
+
+{% if coach %}     
+      <table class="table table-hover">
+
+      <tbody>
+
+        <tr>
+          <td>дата рождения</td>
+          <td>{{ coach.birth_date|date:"SHORT_DATE_FORMAT" }}</td>
+        </tr>
+        <tr>
+          <td>адрес</td>
+          <td>{{ coach.address }}</td>
+        </tr>
+        <tr>
+          <td>почта</td>
+          <td>{{ coach.user.email }}</td>
+        </tr>
+        <tr>
+          <td>логин skype</td>
+          <td>{{ coach.skype }}</td>
+        </tr>
+        <tr>
+          <td>телефон</td>
+          <td>{{ coach.phone }}</td>
+        </tr>
+        <tr>
+          <td>курсы учитель</td>
+          <td>
+              {% for course in coach.ref_coach.all %}
+               <a href="{% url 'courses:detail' course.id %}">
+                 {{ course }}
+               </a>
+               &nbsp
+              студенты курса
+              <a href="{% url 'students:index' %}?course_id={{ course.id }}">
+                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+              </a>
+              <br>
+              {% endfor %}
+         </td>
+        </tr>
+        <tr>
+          <td>курсы ассистент</td>
+          <td>
+              {% for course in coach.ref_assistant.all %}
+               <a href="{% url 'courses:detail' course.id %}">
+                 {{ course }}
+               </a>
+              &nbsp
+              студенты курса
+              <a href="{% url 'students:index' %}?course_id={{ course.id }}">
+                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+              </a>
+              <br>
+              {% endfor %}
+         </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+{% else %}
+    <p>No coaches are available.</p>
+{% endif %}
+
+
+{% endblock main_content %}
+

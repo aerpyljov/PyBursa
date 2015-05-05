@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Результаты</title>
+
+  </head>
+
+  <body>
+  Квадратное уравнение a*x*x + b*x + c = 0
+
+{% include "quadratic/quadratic_form.html" %}
+
+    <p>
+  {% if variables.d or variables.d = 0 %}
+      Дискриминант: {{ variables.d }}
+  {% endif %}
+    </p>
+
+  {% if variables.d and variables.d > 0 %}
+      Квадратное уравнение имеет два действительных корня: х1 = {{ variables.x1 }}, х2 = {{ variables.x2 }}
+  {% endif %}
+
+  {% if variables.d and variables.d < 0 %}
+      Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.
+  {% endif %}
+
+  {% if variables.d = 0 %}
+      Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: х1 = х2 = {{ variables.x1 }}
+  {% endif %}
+
+  </body>
+
+</html>
