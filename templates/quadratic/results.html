@@ -1,0 +1,23 @@
+{% extends 'quadratic/base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Результат{% endblock %}
+
+
+{% block quadratic %}
+<form>
+{% if answer %}
+  <p>Квадратное уравнение вида {{ form.a.value }}×x² {% if form.b.value >= '0' %}+{% endif %} {{ form.b.value }}×x {% if form.c.value >= '0' %}+{% endif %} {{ form.c.value }} = 0</p>
+{% else %}
+  <p>Квадратное уравнение вида a×x² + b×x + c = 0</p>
+{% endif %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-info">Расчитать</button>
+</form>
+{% if answer %}
+<br />
+<p>Дискриминант = {{ dis }}</p>
+<p>{{ answer }}</p>
+{% endif %}
+{% endblock %}

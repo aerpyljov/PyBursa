@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Все курсы{% endblock %}
+
+
+{% block nav_class_courses:courses %}active{% endblock %}
+
+
+{% block main %}
+{% include "includes/inc_messages.html" %}
+{% include "includes/inc_courses.html" with buttoms=True %}
+{% endblock main %}
