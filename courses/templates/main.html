@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}Main {{ block.super }}{% endblock %}
+
+
+{% block nav_main %}active{% endblock %}
+
+
+{% block content %}
+      <div class="jumbotron">
+        <h2Высшая математика</h2>
+        <p class="lead">Наши занятия помогут вам освоить основы высшей математики. Сложное станет простым. На наших занятиях вы будете развивать свое логическое мышление, пространственное воображение.</p>
+      </div>
+
+      <h2 class="sub-header">Список курсов</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Курс</th>
+                  <th>Описание</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for course in courses %}
+                <tr>
+                  <td><a href="{% url 'courses:course_description' course.id %}">{{ course.name }}</a></td>
+                  <td>{{ course.short_description|truncatechars:30 }}</td>
+                </tr>
+              {% endfor %} 
+              </tbody>
+            </table>
+          </div>
+
+      
+{% endblock %}
