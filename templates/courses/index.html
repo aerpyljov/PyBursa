@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %} Курсы {% endblock title %}
+
+
+{% block nav_class_main %}active{% endblock %}
+
+
+{% block content %}
+{% if messages %}
+  {% for message in messages %}
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ message }}</h3>
+    </div>
+  </div>
+  {% endfor %}
+{% endif %}
+
+  <div class="jumbotron">
+    <h1>Профессиональные курсы</h1>
+    <p class="lead">Присоединяйся!</p>
+  </div>
+
+  <form action="{% url 'courses:add_course' %}">
+    <button type="submit" class="btn btn-primary" value="Add">
+      <span class="glyphicon glyphicon-plus"></span> Добавить курс
+    </button>
+  </form>
+  <br />
+
+  {% if courses_list %}
+  <table  class="table table-striped table-bordered table-hover">
+   <thead>
+    <tr>
+      <th>Курс</th><th>Описание</th><th></th><th></th>
+    </tr>
+   </thead>
+   <tbody data-link="row" class="rowlink">
+   {% for course in courses_list %}
+    <tr>
+      <td><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></td>
+      <td>{{ course.short_description }} </td>
+      <td>
+        <form action="{% url 'courses:edit_course' course.id %}">
+          <button type="submit" class="btn btn-primary" value="Edit">
+            <span class="glyphicon glyphicon-pencil"></span> Редактировать
+          </button>
+        </form>
+      </td>
+      <td>
+        <form action="{% url 'courses:delete_course' course.id %}">
+          <button type="submit" class="btn btn-primary" value="Delete">
+            <span class="glyphicon glyphicon-trash"></span> Удалить
+          </button>
+        </form>
+      </td>
+    </tr>
+   {% endfor %}
+   </tbody>
+  </table>
+  {% else %}
+    <p>Нет открытых курсов.</p>
+  {% endif %}
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %} Квадратное уравнение {% endblock title %}
+
+{% block content %}
+    {% if form %}
+     <h3>Квадратное уравнение a &#8729 x<sup>2</sup> + b &#8729 x + c = 0</h3>
+    <form>
+      {{ form.as_p }}
+      <input type="submit" value="Решить" />
+    </form>
+    {% endif %}
+
+    <div class="row marketing">
+      {% if root_message %}
+       <h4>Дискриминант = {{ discriminant }}</h4>
+       <h4>{{ root_message }}</h4>
+      {% endif %}
+    </div>
+
+
+{% endblock content %}

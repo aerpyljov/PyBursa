@@ -1,0 +1,69 @@
+{% extends 'courses/index.html' %}
+{% load staticfiles %}
+
+
+{% block title %} Детали курса {% endblock title %}
+
+{% if course %}
+  {% block nav_students_url %}?course_id={{ course.id }}{% endblock  %}
+{% endif %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ message }}</h3>
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+
+  <div class="jumbotron">
+    <h1>{{ course.name }}</h1>
+    <h4 class="left">{{ course.description|default:"Нет описания" }}</h4>
+  </div>
+
+  <h2>Преподаватели</h2>
+  {% if course %}
+    {% include "inc_panel_primary.html" with block_title="Учитель" person=course.coach  %}
+    {% include "inc_panel_primary.html" with block_title="Ассистент" person=course.assistant  %}
+  {% else %}
+      <p>Нет ведущих преподавателей.</p>
+  {% endif %}
+
+  <h2>План курса</h2>
+
+
+ {% if course %}
+  <form action="{% url 'courses:add_lesson' course.id %}">
+    <button type="submit" class="btn btn-primary" value="Add">
+      <span class="glyphicon glyphicon-plus"></span> Добавить занятие
+    </button>
+  </form>
+  <br />
+  {% endif %}
+
+
+  {% if course %}
+   <table  class="table table-striped ">
+   <thead>
+    <tr>
+       <th>#</th><th>Тема</th><th>Описание</th>
+   </tr>
+  </thead>
+  <tbody>
+  {% for lesson in course.lesson_set.all %}
+   <tr>
+     <td>{{ lesson.number_order }}</td>
+     <td>{{ lesson.theme }}</td>
+     <td>{{ lesson.description|linebreaks }} </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+ </table>
+  {% else %}
+      <p>Нет доступных уроков.</p>
+  {% endif %}
+      
+{% endblock content %}
