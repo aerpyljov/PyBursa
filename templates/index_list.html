@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Курсы Web-разработки{% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block content %}
+<div style = "font-size: 16px; text-align : justify">
+
+        <h3>Почему нужно изучить и работать на Python?</h3>
+        <p ><a href="https://www.python.org">Python</a> – это один из наиболее популярных современных языков программирования. Он пригоден для решения разнообразных задач и предлагает те же возможности, что и другие языки программирования: динамичность, поддержку ООП и кросс-платформенность. Разработку Python начал Гвидо Ван Россум <a href="https://ru.wikipedia.org/wiki/Россум,_Гвидо_ван">(Guido Van Rossum)</a>  еще в середине 1990-х годов, поэтому к настоящему времени удалось избавиться от стандартных «детских» болезней, существенно развить лучшие стороны языка и привлечь множество программистов, использующих Python для реализации своих проектов.</p>
+        
+        <p>Согласно <a href="https://ru.wikipedia.org/wiki/Python">Wikipedia</a>, Python прочно вошёл в 8 наиболее популярных языков программирования по версии TIOBE Programming Community Index. А если не считать отдельно языки с C-подобным синтаксисом (C++, C#, ObjectiveC, Java и т. д.), то Python является третьим по популярности языком.</p>
+      </div>
+	<h3>Выбирай на каком курсе ты хочешь учиться</h3>
+	
+        <pre>                          
+    <table class='courses_list'>
+      
+      <tr>
+        <th>Курс</th>
+        <th>Описание</th>
+        
+      </tr>
+      <tr>
+        <td><a href="{% url '1' %}">{{courses.0.course_title}}</a></td>
+        <td>{{courses.0.short_description}}</td>
+        
+      </tr>
+      <tr>
+        <td><a href="{% url '2' %}">{{courses.1.course_title}}</a></td>
+        <td>{{courses.1.short_description}}</td>
+        
+      </tr>
+      <tr>
+        <td><a href="{% url '3' %}">{{courses.2.course_title}}</a></td>
+        <td>{{courses.2.short_description}}</td>
+        
+      </tr>
+      
+    </table>     
+  </pre>
+{% endblock content %}
