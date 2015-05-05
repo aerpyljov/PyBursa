@@ -1,0 +1,21 @@
+﻿{% extends 'courses/base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %} Course Details {% endblock title %}
+
+
+{% block main_content %}
+{{ object }}
+  <div class="jumbotron">
+    <div class="container">
+      <h2 align = 'center'>Course name: {{ course.name|upper }}</h2>
+      <p> {{ object.description }} </p>
+      {% include "courses/inc_couches_info.html" with block_title='Instructor:' object=course.coach %}
+      {% include "courses/inc_couches_info.html" with block_title='Assistant:' object=course.assist %}
+      <h2>Course plan</h2>
+      {% include "courses/inc_course_info.html" %}
+    </div>
+  </div>
+{% endblock main_content %}

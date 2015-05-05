@@ -1,0 +1,18 @@
+
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %} Main Page {% endblock title %}
+
+{% block nav_class_home %} active {% endblock nav_class_home %}
+
+
+{% block main_content %}
+  <div class="jumbotron">
+    <div class="container">
+      {% include 'inc_course_info.html' %}
+    </div> 
+  </div>
+{% endblock main_content %}

@@ -1,0 +1,29 @@
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %} Quadratic {% endblock title %}
+
+{% block nav_class_quadratic %} active {% endblock %}
+
+{% block main_content %}
+
+	<div class="jumbotron">
+		<div class="container">
+		  <br>
+		  <p>Quadratic a*x*x + b*x + c = 0</p>
+  	  <form>
+        {{ form.as_p }}
+		  	<p>Count quadratic - <input type='submit'></p>
+		  </form>
+
+		  <p>a = {{a}}</p>
+		  <p>b = {{b}}</p>
+		  <p>c = {{c}}</p>
+		  <p>{{d}}</p>
+		  <p>{{roots}}</p>
+		</div>
+  </div>
+
+{% endblock main_content %}

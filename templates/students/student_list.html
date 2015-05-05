@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Students {% endblock title %}
+
+{% block nav_class_student %} active {% endblock %}
+
+{% block main_content %}
+    <br><br><br>
+    <div class="datagrid">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Full name</th><th>Adress</th><th>Skype</th><th>Course</th><th>Edit</th><th>Remove</th></tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'students:detail' student.id %}"> {{ student.name }} {{ student.surname }} </a></td>
+            <td>{{ student.adress }}</td>
+            <td>{{ student.skype }}</td>
+            <td>
+              {% for course in student.courses.all %}
+              <ul>
+                <li><p><a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a></li></p>
+              </ul>
+              {% endfor %}
+            </td>
+            <td><a href="{% url 'students:edit' student.id %}">Edit</a></td>
+            <td><a href="{% url 'students:delete' student.id %}">Delete</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock main_content %}
+
+
+
+

@@ -1,0 +1,18 @@
+﻿{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block title %} Contacts {% endblock title %}
+
+
+{% block nav_class_contact %} active {% endblock nav_class_contact %}
+
+
+{% block main_content %}
+  <div class="jumbotron">
+    <div class='container'>
+      {% include 'contact_info.html' %}
+    </div>
+  </div>
+{% endblock main_content %}
