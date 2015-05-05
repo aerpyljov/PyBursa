@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Course detail info
+{% endblock %}
+
+{% block content %}
+<div class="course-info">
+  <h2>{{ course.title}}</h2>
+  <p>{{ course.descr_full|linebreaksbr}}</p>
+
+
+  <div class="teaches">
+    <h2>Преподаватели</h2>
+
+    {% if course.coach %}
+      {% include "courses/inc_coach.html" with block_title="Преподаватель" coach=course.coach %}
+    {% endif %}
+
+    {% if course.assistant %}
+      {% include "courses/inc_coach.html" with block_title="Ассистент" coach=course.assistant %}
+    {% endif %}
+
+  </div>
+
+  <div>
+    <h2>План курса</h2>
+
+    <div class="lesson-add">
+      <a href="{% url 'courses:lesson-add' course.id %}">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        Добавить новый урок
+      </a>
+    </div>
+
+    <div class="courses">
+      <table class="table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Тема</th>
+          <th>Описание</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lesson in course_lessons %}
+        <tr>
+          <td>{{ lesson.num_in_plan }}</td>
+          <td>{{ lesson.theme }}</td>
+          <td>{{ lesson.descr|linebreaksbr }}</td>
+          <td>
+            <a href="{% url 'courses:lesson-edit' lesson.id %}">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+          </td>
+          <td>
+            <a href="{% url 'courses:lesson-delete' lesson.id %}">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

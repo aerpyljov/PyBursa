@@ -1,0 +1,202 @@
+body {
+    margin: 50px 0 0;
+    padding-bottom: 70px;
+}
+
+#contact {
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+#container-info {
+    background: url("../images/img_1.png") no-repeat scroll 4px 58px rgba(0, 0, 0, 0);
+    min-height: 250px;
+    text-align: center;
+}
+
+#container-info h2 {
+    padding-top: 10px;  
+    padding-bottom: 20px;
+}
+
+#container-info p {
+    padding-left: 320px;
+    text-align: justify;
+}
+
+.course-info h2,
+.detail-info h2,
+.student-add h2,
+.student-delete h2,
+.contacts h2 {
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 10px;
+}
+
+.container > h2 {
+    text-align:  center;
+    padding-bottom: 20px;
+}
+
+.delete-std {
+    margin: 10px;
+    padding-top: 30px;
+}
+
+.footer {
+    background: #f5f5f5;
+    bottom: 0;
+    font-size: 15px;
+    height: 60px;
+    width:100%;
+}
+
+.footer .text-muted {
+    margin: 20px 0;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+#history-info {
+    background: url("../images/history.png") no-repeat scroll 560px 65px rgba(0, 0, 0, 0);
+    min-height: 287;
+    text-align: center;
+}
+
+#history-info .text-history {
+    padding-left: 20px;
+    padding-right: 180px;
+    text-align: justify;
+}
+
+#program-info {
+    width: 800px;
+}
+
+#page-contact .nav-contact,
+#page-students .nav-students,
+#page-home .nav-home,
+#page-feedback .nav-feedback {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.lesson-add {
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.messages li {
+    list-style-type: none;
+}
+
+.messages {
+    padding: 0;
+}
+
+.messages-info {
+    padding: 20px;
+}
+
+.organaizer {
+    float: left;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 70px;
+    width: 600px;
+}
+
+.organaizer .float-right {
+    min-height: 100%;
+    width: 350px;
+}
+
+.img-crop {
+    border: 3px solid #e3e3e3;
+    border-radius: 7px;
+    margin-left: 10px;
+}
+
+.teacher-photo {
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    float: left;
+}
+
+.teaches h2 {
+    margin-bottom: 20px;
+}
+
+.courses thead th {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.style-form td,
+.style-form th {
+    padding: 5px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table-style th {
+    text-align: left;
+}
+
+.text-block {
+    padding-right: 30px;
+}
+
+.teacher {
+    float: left;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    }
+
+#teacher-info .teacher .teacher_name {
+    font-size: 14px;
+    padding-top: 10px;
+    text-align: center;
+
+}
+
+#teacher-info .teacher .teacher_name span{
+    color: grey;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+}
+
+#teacher-info .text-teacher {
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#teacher-info .float-right {
+    width: 600px;
+}
+
+.quadr-p {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.errorlist {
+    color: red;
+    padding: 0;
+}
+
+.errorlist li {
+    list-style-type: none;
+}

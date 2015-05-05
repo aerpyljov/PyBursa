@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block section %}page-contact{% endblock %}
+
+{% load staticfiles %}
+
+{% block title %}
+Contacts
+{% endblock %}
+
+{% block content %}
+<div class="contacts">    
+  <h2>Организаторы курса Python/Django</h2>
+
+  <div class="organaizer">
+
+    <div class="float-left">
+      <div class="img-crop">
+        <img src="{% static 'images/org_2.jpg' %}">
+      </div>
+    </div>
+
+    <div class="float-right">
+      <h5>Основатель ITbursa -  <b>Павел Обод</b> </h5>
+        <p>
+          <span>skype:</span>
+          <a href="skype:azaless">azaless</a>
+        </p>
+        <p>
+          <span>email:</span>
+          <a href="mailto:itbursa100@gmail.com">itbursa100@gmail.com</a>
+        </p>
+        <p>
+          <span>phone:</span>
+          <strong>+38(063)-702-37-03</strong>
+        </p>
+    </div>
+  </div>
+
+  <div class="organaizer">
+    
+    <div class="float-left">
+      <div class="img-crop">
+        <img src="{% static 'images/org_1.jpg' %}">
+      </div>
+    </div>
+
+    <div class="float-right">
+      <h5>Менеджер ITbursa - <b>Анна Малахова</b></h5>
+        <p>
+          <span>skype:</span>
+          <a href="skype:anechka.malakhova?chat">anechka.malakhova</a>
+        </p>
+        <p>
+          <span>email:</span>
+          <a href="mailto:anna.kharkiv@gmail.com">anna.itbursa@gmail.com</a>
+        </p>
+        <p>
+          <span>phone:</span>
+          <strong>+38(096)-070-53-47 </strong>
+        </p>
+    </div>
+  </div>
+
+  <div class="organaizer">
+    
+    <div class="float-left">
+      <div class="img-crop">
+        <img src="{% static 'images/org_3.jpg' %}">
+      </div>
+    </div>
+    
+    <div class="float-right">
+      <h5>Оплата курсов - <b>Татьяна Колесник</b></h5>
+        <p>
+          <span>skype:</span>
+          <a href="skype:princessataniakolesnik">princessataniakolesnik</a>
+        </p>
+        <p>
+          <span>email:</span>
+          <a href="mailto:tatyana@outsource-people.com">tatyana@outsource-people.com</a>
+        </p>
+        <p>
+          <span>phone:</span>
+          <strong>+38(063)-729-45-67</strong>
+        </p> 
+    </div>
+  </div>
+</div>
+{% endblock %}
