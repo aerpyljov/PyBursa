@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Pybursa. Coach{% endblock title %}
+
+
+{% block students_link %}
+<a href="{% url 'students:list' %}">
+{% endblock students_link %}
+
+
+{% block main_contant %}
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>{{ coach_info.user.first_name }}  {{ coach_info.user.last_name }}</h3>
+  </div>
+  <table class="table">
+    <tr>
+      <td class="column25">Дата рождения</td>
+      <td>{{ coach_info.birth_date|date:"d.m.Y" }}</td>           
+    </tr>
+    <tr>
+      <td>Адрес</td>
+      <td>{{ coach_info.adress }}</td>           
+    </tr>
+    <tr>
+      <td>Cкайп</td>
+      <td>{{ coach_info.skype }}</td>           
+    </tr>
+      <tr>
+      <td>Телефон</td>
+      <td>{{ coach_info.phone }}</td>           
+    </tr>  
+    <tr>
+      <td>Курсы учитель</td>
+      <td>
+      {% for course in coach_info.coach_on_course.all %} 
+        <p>
+          <a href="{% url 'courses:course_info' course.id %}">{{ course.title }}</a> - Cтуденты курса
+          <a href="{% url 'students:list' %}?course_id={{ course.id }}">
+          <span class="glyphicon glyphicon-eject" aria-hidden="true"></span></a>
+        </p>
+        {% endfor %}
+      </td>           
+    </tr> 
+    <tr>
+      <td>Курсы ассистент</td>
+      <td>
+        {% for course in coach_info.assistant_on_course.all %} 
+        <p>
+          <a href="{% url 'courses:course_info' course.id %}">{{ course.title }}</a> - Cтуденты курса
+          <a href="{% url 'students:list' %}?course_id={{ course.id }}">
+          <span class="glyphicon glyphicon-eject" aria-hidden="true"></span></a>
+        </p>
+        {% endfor %}
+      </td>           
+    </tr>           
+  </table>
+</div>   
+ 
+{% endblock main_contant %}
