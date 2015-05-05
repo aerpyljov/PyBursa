@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% load static from staticfiles %}
+
+
+{% block title %}Unver.com Contacts{% endblock %}
+
+
+{% block active_contacts %}active{% endblock %}
+
+
+{% block main %}
+
+
+{% include "inc_index.html" with text="Call us today to find more information!"%}
+
+<div class="container">
+<div class="jumbotron">
+  <p class="lead">Working hours are: Mon-Fri 10am - 6pm. Time now: {{ date_now|date:"l, h:i a"}}</p>
+  <ul>
+  <li>cell: <i>+18254567876</i></li>
+  <li>e-mail: <i>info@univer.com</i></li>
+  </ul>
+</div>
+</div>
+{% endblock main %}
+

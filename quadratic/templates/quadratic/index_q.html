@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Quadratic</title>
+    {% load static from staticfiles %}
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="page-header">
+      <div class="col-md-1"></div>
+      <h1 class="row">Quadratic equation calculation with form validation</h1>
+    </div>
+
+    <div class="container">
+      <p class="lead">Quadratic equation: a*x*x + b*x + c = 0</p>
+      <form method="post" class="form-horizontal">
+        <div class="form-group">
+          {% csrf_token %}
+          <div class="col-sm-10">
+            {{ form.as_p }}
+          </div>
+          <div class="col-sm-10"><input type="submit" /></div>
+        </div>
+      </form>
+
+    {% if not error %}
+    <ul>
+      <li>a = {{ a }} </li>
+      <li>b = {{ b }} </li>
+      <li>a = {{ c }} </li>
+    </ul>
+
+    Discriminant: {{ d }}
+    {{ result_message }}
+    {% endif %}
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
