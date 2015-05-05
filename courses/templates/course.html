@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}{{course.name|upper}} - Курс по веб программированию{% endblock title %}
+
+
+{% block nav %}{% include "nav.html" with active_home='active' get='?course_id=' id=course.id %}{% endblock nav %}
+
+
+{% block jumbotron %}
+<div class="jumbotron">
+    <h2>{{course.name}}</h2>
+    <p>{{course.text}}</p>
+</div>
+{% if course.trener or course.assist %}
+<div>
+    <h3>Преподаватель</h3>
+    <p><b><a href="{% url 'coach' course.trener.id %}">
+        {{course.trener.user.first_name}} {{course.trener.user.last_name}}</a></b></p>
+    <p>{{course.trener.desc|truncatechars:80}}</p>
+    <h3>Ассистент</h3>
+    <p><b><a href="{% url 'coach' course.assist.id %}">
+        {{course.assist.user.first_name}} {{course.assist.user.last_name}}</a></b></p>
+    <p>{{course.assist.desc|truncatechars:80}}</p>
+</div>
+{% else %}
+    <h4>Преподаватель и Ассистент еще не назначены на данный курс</h4>
+{% endif %}
+{% endblock jumbotron %}
+
+{% block table %}
+<h2>Расписание занятий</h2><br />
+
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+        </div>
+    {% endif %}
+
+<p><a class="btn btn-primary glyphicon glyphicon-plus"
+      href="{% url 'add_lesson' course.id %}" role="button"> Добавить занятие</a></p><br />
+
+<table class="table table-striped">
+    <tbody>
+    <tr>
+        <th>#</th>
+        <th>Тема</th>
+        <th>Описание</th>
+    </tr>
+    {% for les in lessons %}
+    <tr>
+        <td>{{les.num}}</td>
+        <td>{{les.thema}}</td>
+        <td>{{les.text}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock table %}
