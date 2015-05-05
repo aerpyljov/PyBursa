@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}Главная{% endblock %}
+
+
+{% block nav_main%}active{% endblock %}
+
+
+{% block main_content%}
+    <div class="container">
+      <div class="jumbotron">
+        <h3>Наши курсы научат вас :</h3>
+        <br>
+        <p>следовать zen-python, писать правильный python-код согласно лучшим принципам</p>
+        <p>разрабатывать серверный бекенд веб-приложений на современном языке</p>
+        <p>реализовывать и разворачивать полноценный веб-проект на python/django</p>
+      </div>
+    </div>
+    <br><br>
+    <div class="container">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <align="center">
+        <div class="panel-heading" align="center"><h3>Программа</h3></div>
+
+
+        <!-- Table -->
+
+        <table class="table">
+
+          <tr>
+          <th> <div align="center"><h5>Курс</h5></div></th>
+          <th> <div align="center"><h5>Описание</h5></div></th>
+         </tr>
+         {% for course in courses %}
+         <tr><td align="center" style="vertical-align:middle"><a href="/courses/{{ course.id }}/">{{ course.title|upper }}</td>
+         <td>
+           <p>{{ course.descr }}</p>
+         </td>
+         {% endfor %}
+
+         </tr>
+
+        </table>
+      </div>
+    </div>
+{% endblock main_content%}
+

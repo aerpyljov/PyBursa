@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}Студент{% endblock %}
+
+
+{% block nav_stud%}active{% endblock %}
+
+
+{% block main_content%}
+
+    <div class="container">
+
+    {% include "now.html" %}
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <align="center">
+        <div class="panel-heading" align="center"><h2>{{ one_student.surname }} {{ one_student.name }}</h2></div>
+
+
+        <!-- Table -->
+
+        <table class="table">
+         <tbody>
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>дата рождения</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ one_student.date_of_birth }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>адрес</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ one_student.addr }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>почта</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ one_student.email }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>скайп</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ one_student.skype }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>тел</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ one_student.phone }}</p></td>
+         </tr>
+
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>курсы</p></td>
+         <td align="center" style="vertical-align:middle"><p>
+             {% for theme in one_student.courses.all %}
+             <a href="/courses/{{theme.id}}/"> {{ theme }}</a>
+             {% endfor %}
+         </p></td>
+         </tr>
+
+         </tbody>
+
+        </table>
+      </div>
+    </div>
+{% endblock main_content%}
+
+
+

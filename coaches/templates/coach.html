@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}Преподаватель{% endblock %}
+
+
+
+
+{% block main_content%}
+    <div class="container">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <align="center">
+        <div class="panel-heading" align="center"><h2>{{ u_coach.first_name }} {{ u_coach.last_name }}</h2></div>
+
+
+        <!-- Table -->
+
+        <table class="table">
+         <tbody>
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>дата рождения</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ coach.date_of_birth|date:"d E Y" }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>адрес</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ coach.addr }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>почта</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ u_coach.email }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>скайп</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ coach.skype }}</p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>тел</p></td>
+           <td align="center" style="vertical-align:middle"><p>{{ coach.phone }}</p></td>
+         </tr>
+
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>курсы учитель</p></td>
+         <td align="center" style="vertical-align:middle"><p>
+             {% for theme in i_courses.all %}
+             <a href="/courses/{{theme.id}}/"> {{ theme }}</a>
+             студенты курса <a href="/students/?course_id={{theme.id}}"> (просмотр)</a>
+             <br>
+             {% endfor %}
+         </p></td>
+         </tr>
+
+         <tr>
+           <td align="center" style="vertical-align:middle"><p>курсы ассистент</p></td>
+         <td align="center" style="vertical-align:middle"><p>
+             {% for theme in a_courses.all %}
+             <a href="/courses/{{theme.id}}/"> {{ theme }}</a>
+             студенты курса <a href="/students/?course_id={{theme.id}}"> (просмотр)</a>
+             <br>
+             {% endfor %}
+         </p></td>
+         </tr>
+
+
+         </tbody>
+
+        </table>
+
+
+
+      </div>
+    </div>
+
+{% endblock main_content%}
+

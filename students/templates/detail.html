@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}Студенты{% endblock %}
+
+
+{% block nav_stud%}active{% endblock %}
+
+
+{% block main_content%}
+
+
+
+    <div class="container">
+
+    {% include "now.html" %}
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <align="center">
+        <div class="panel-heading" align="center"><h3>Список студентов</h3></div>
+
+
+        <!-- Table -->
+
+        <table class="table">
+         <thead>
+            <tr>
+            <th> <div align="center"><h5>#</h5></div></th>
+            <th> <div align="center"><h5>Фамилия имя</h5></div></th>
+            <th> <div align="center"><h5>Адрес</h5></div></th>
+            <th> <div align="center"><h5>Скайп</h5></div></th>
+            <th> <div align="center"><h5>Курсы</h5></div></th>
+           </tr>
+         </thead>
+
+         <tbody>
+         {% for student in students %}
+
+         <tr>
+         <td align="center">{{ forloop.counter }}</td>
+         <td align="center" style="vertical-align:middle"><p><a href="/students/{{ student.id }}/">{{ student.surname }} {{ student.name }}</a></p></td>
+         <td align="center" style="vertical-align:middle"><p>{{ student.addr }}</p></td>
+         <td align="center" style="vertical-align:middle"><p>{{ student.skype }}</p></td>
+         <td align="center" style="vertical-align:middle"><p>
+             {% for theme in student.courses.all %}
+                 <a href="/courses/{{theme.id}}/"> {{ theme }}</a>
+             {% endfor %}
+         </p></td>
+         </tr>
+         {% endfor %}
+
+         </tr>
+         </tbody>
+
+        </table>
+      </div>
+    </div>
+
+{% endblock main_content%}
+
