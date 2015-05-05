@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+
+{% load static from staticfiles %}
+
+
+{% block title%}
+	Главная - pyBursa
+{% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block main_content%}
+			<ol class="breadcrumb">
+			  <li class="active">Главная</li>
+			</ol>
+			<div class="jumbotron">
+				<div class="jumbo_internal">
+					<h1>Go ooniversity!</h1>
+					<p>
+						Различные курсы для различных целей тра-та-та!
+					</p>
+				</div>
+			</div>
+			<div class="panel panel-default">
+		      <!-- Default panel contents -->
+		      <div class="panel-heading">Выбирай курс на котором хочешь учиться!</div>
+
+		      <!-- Table -->
+		      <table class="table">
+		        <thead>
+		          <tr>
+		          	 <th scope="row">#</th>
+		            <th>Курс</th>
+		            <th>Описание</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		        {% for c in courses %}
+		          <tr>
+		          	 <th scope="row">{{ c.id }}</th>
+		            <td><a href="{% url "courses:oneof" c.id %}">{{ c.name }}</a></td>
+		            <td>{{ c.short_description }}</td>
+		          </tr>
+		        {% endfor%}
+		        </tbody>
+		      </table>
+		    </div>
+
+			
+		</div><!--/.container-->
+
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted">
+					2015 &copy; PyBursa. Created by maximbilozorov
+				</p>
+			</div>
+		</footer>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	</body>
+</html>
+{% endblock main_content%}

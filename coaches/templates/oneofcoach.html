@@ -1,0 +1,57 @@
+{% extends "coaches/base.html" %}
+
+
+{% load static from staticfiles %}
+
+
+{% block title%}
+	{{ coach.user.first_name }} {{coach.user.last_name}} [!] - pyBursa
+{% endblock title %}
+
+
+{% block main_content %}
+	<h1>{{ coach.user.first_name }} {{coach.user.last_name}}</h1>
+			
+		      <!-- Table -->
+		      <table class="table">
+		        <tbody>
+		        <tr>
+		          	<td>дата рождения</td>
+		            <td>{{ coach.date_of_birth }}</td>
+		        </tr>
+		        <tr>
+		          	<td>адрес</td>
+		            <td>{{ coach.address }}</td>
+		        </tr>
+		        <tr>
+		          	<td>почта</td>
+		            <td>{{ coach.user.email }}</td>
+		        </tr>
+		        <tr>
+		          	<td>skype</td>
+		            <td>{{ coach.skype }}</td>
+		        </tr>
+		        <tr>
+		          	<td>телефон</td>
+		            <td>{{ coach.phone }}</td>
+		        </tr>
+		        <tr>
+		          	<td>курсы учитель</td>
+		            <td>
+		            	{% for c in trainer_courses %}
+			            	<a href="{% url "courses:oneof" c.id %}">{{ c }}</a> | <a href="{% url 'students:index' %}?course_id={{ c.id }}">студенты курса</a><br />
+			            {% endfor%}
+		            </td>
+		        </tr>
+		        <tr>
+		          	<td>курсы ассистент</td>
+		            <td>
+		            	{% for c in assistant_courses %}
+			            	<a href="{% url "courses:oneof" c.id %}">{{ c }}</a> | <a href="{% url 'students:index' %}?course_id={{ c.id }}">студенты курса</a><br />
+			            {% endfor%}
+		            </td>
+		        </tr>
+		        </tbody>
+		      </table>
+
+{% endblock main_content %}

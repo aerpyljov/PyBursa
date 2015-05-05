@@ -1,0 +1,69 @@
+{% extends "students/base.html" %}
+
+
+{% block title%}
+	Студенты курса {{ course.name }} - pyBursa
+{% endblock title %}
+
+
+{% block main_content %}		
+			<ol class="breadcrumb">
+			  <li class="active">Список студентов</li>
+			</ol>
+			
+			 {% if messages %}
+		    	<ul class="messages">
+		    	{% for message in messages %}
+		    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+		    			{{ message }}
+		    		</li>
+		    	{% endfor %}
+		    	<ul>
+		    {% endif %}
+		    <br />
+		    </ul>
+			<a href="{% url "students:add" %}">[+] добавить студента</a>
+ 			<div class="panel panel-default">
+		      <!-- Default panel contents -->
+		      <div class="panel-heading">План курса</div>
+
+		      <!-- Table -->
+		      <table class="table">
+		        <thead>
+		          <tr>
+		          	 <th scope="row">#</th>
+		            <th>фамилия имя</th>
+		            <th>дата рождения</th>
+		            <th>адрес</th>
+		            <th>skype</th>
+		            <th>курсы</th>
+		            <th></th>
+		            <th></th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		        {% for s in students %}
+		          <tr>
+		          	<td scope="row">{{ s.id }}</td>
+		            <td><a href="{% url "students:oneof" s.id %}">{{ s.surname|upper }} {{ s.name }}</a></td>
+		            <td>{{ s.date_of_birth|date:"SHORT_DATE_FORMAT" }}</td>
+		            <td>{{ s.address|default:"not set"}}</td>
+		            <td>{{ s.skype|truncatechars:9 }}</td>
+
+		            <td>
+			            {% for c in s.courses %}
+			            	<a href="{% url "courses:oneof" c.id %}">{{ c }}</a> <br />
+			            {% endfor%}
+		            </td>
+		            <td>
+		            	<a href="{% url "students:edit" s.id %}">edit</a>
+		            </td>
+		             <td>
+		            	<a href="{% url "students:delete" s.id %}">delete</a>
+		            </td>
+		          </tr>
+		        {% endfor%}
+		        </tbody>
+		      </table>
+		    </div>
+{% endblock main_content %}		
