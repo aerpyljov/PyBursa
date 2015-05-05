@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Pybursa.Детально{% endblock %}
+
+
+{% block bodyhead %}{% endblock %}
+
+
+{% block content %}
+<hr class="style-eight">
+<h4>Детальные сведенья о студенте: <h2>{{ student.name }} {{ student.surname }}</h2></h4>
+<div class="panel-body">
+    <table class="table table-striped">
+		<tr>
+            <th>Дата рождения: </th>
+            <td> {{ student.date_of_birth|date:"d N Y" }} </td>
+        </tr>
+		<tr>
+            <th>Адрес: </th>
+            <td> {{ student.address }} </td>
+        </tr>
+		<tr>
+            <th>Почта: </th>
+            <td> {{ student.email }} </td>
+        </tr>
+		<tr>
+            <th>Логин Skype: </th>
+            <td> {{ student.skype|default:"нет" }} </td>
+        </tr>
+		<tr>
+            <th> Телефон: </th>
+            <td> {{ student.phone }} </td>
+        </tr>
+        <tr>
+            <th>Курсы: </th>
+            <td>
+            {% for i in student.courses.all %}
+               <p><a href="{% url 'courses:lessons' i.id %}">{{ i.name }}</a></p>
+            {% endfor %}
+            </td>
+        </tr>
+	</table>
+    <hr class="style-eight">
+</div>
+{% endblock content %}

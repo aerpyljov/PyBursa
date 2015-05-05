@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Pybursa.Курсы{% endblock %}
+
+
+{% block nav_st_detail %}{% endblock %}
+
+
+{% block bodyhead %}{% endblock %}
+
+
+{% block content %}
+
+<p><h1 align="center">{{ planmodel.name }}</h1></p>
+<p><h3 align="center">{{ planmodel.description }}</h3></p><br>
+
+{% if messages %}
+<div class="alert alert-success">
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% include "teachers.html" %}
+
+<h1 align="center">План курса</h1><br>
+<p>
+     <a href="{% url 'courses:lesson_add' planmodel.id %}" class="btn btn-large btn-primary" type="button">Добавить занятие</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+       <tr>
+           <th>#</th>
+           <th>Тема</th>
+           <th>Описание</th>
+           <th></th>
+       </tr>
+    </thead>
+    {% for lesson in lessons %}
+    <tbody>
+       <tr>
+           <td>{{ lesson.order_number }}</td>
+           <td>{{ lesson.subject }}</td>
+           <td>{{ lesson.description }}</td>
+           <td>
+                <p>
+                    <a href="{% url 'courses:lesson_edit' lesson.id %}" class="btn btn-success btn-small btn-primary" type="button">ПРАВИТЬ</a>
+                </p>
+                <p>
+                    <a href="{% url 'courses:lesson_delete' lesson.id %}" class="btn btn-danger btn-small" type="button">УДАЛИТЬ</a>
+                </p>
+           </td>
+       </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock content %}

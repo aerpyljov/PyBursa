@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <title>Quadratic_results</title>
+</head>
+<body>
+<p>Квадратное уравнение Ax<sup>2</sup> + Bx + C = 0</p>
+
+<form>
+    {{ form.as_p }}
+    <input type="submit" value="Решить" class="btn btn-default btn-sm btn-info"/>
+</form>
+
+{% if data.discr != None %}
+    <p>Дискриминант: {{ data.discr }} </p>
+
+    {% if data.discr < 0 %}
+        <p>Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.</p>
+    {% elif data.discr == 0 %}
+        <p>Дискриминант равен нулю, квадратное уравнение имеет один действительный корень x1 = x2 = {{ data.x1 }}</p>
+    {% else %}
+        <p>Квадратное уравнение имеет два действительных корня: x1 = {{ data.x1 }}, x2 = {{ data.x2 }}</p>
+    {% endif %}
+{% endif %}
+
+</body>
+</html>

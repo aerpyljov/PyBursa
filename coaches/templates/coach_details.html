@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Pybursa.Преподаватель{% endblock %}
+
+
+{% block nav_st_detail %}{% endblock %}
+
+
+{% block bodyhead %}{% endblock %}
+
+
+{% block content %}
+<hr class="style-eight">
+<div class="row">
+	<div class="col-xs-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Детальные сведенья о преподавателе: <h2>{{ coach.full_name }}</h2></h4>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr>
+                        <th>Дата рождения: </th>
+                        <td> {{ coach.date_of_birth|date:"d N Y" }} </td>
+                    </tr>
+					<tr>
+                        <th>Адрес: </th>
+                        <td> {{ coach.address }} </td>
+                    </tr>
+					<tr>
+                        <th>Почта: </th>
+                        <td> {{ coach.user.email }} </td>
+                    </tr>
+					<tr>
+                        <th>Логин Skype: </th>
+                        <td> {{ coach.skype }} </td>
+                    </tr>
+					<tr>
+                        <th> Телефон: </th>
+                        <td> {{ coach.phone }} </td>
+                    </tr>
+                    <tr>
+                        <th>Курсы учитель: </th>
+                        <td>
+                        {% for i in coursecoach %}
+                        <p><a href="{% url 'courses:lessons' i.id %}">{{ i.name }} -- </a>
+                        <a href="{% url 'students:students_list' %}?course_id={{ planmodel.id }}">cтуденты курса</a></p>
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Курсы асистент: </th>
+                        <td>
+                        {% for i in courseassist %}
+                        <p><a href="{% url 'courses:lessons' i.id %}">{{ i.name }} -- </a>
+                        <a href="{% url 'students:students_list' %}?course_id={{ planmodel.id }}">cтуденты курса</a></p>
+                        {% endfor %}
+                        </td>
+                    </tr>
+				</table>
+			</div>
+		</div>
+    </div>
+</div>
+<hr class="style-eight">
+{% endblock content %}
