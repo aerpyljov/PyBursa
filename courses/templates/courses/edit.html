@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block title %} PyBursa Courses {% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block students_link %}{% url 'students:students' %}?course_id={{ course.id }}{% endblock %}
+
+
+{% block main_content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} >
+    {{ message }}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h3>Редактирование курса</h3>
+
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+  <input type="submit" value="Изменить"/>
+</form>
+
+{% endblock main_content %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block title %} PyBursa Coach {% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block students_link %}{% url 'students:students' %}{% endblock %}
+
+
+{% block main_content %}
+
+
+<div class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="{% static 'bootstrap/images/student_photo.png' %}" alt="student photo">
+  </a>
+  <h4 class="media-heading"> {{ coach.user.first_name }} {{ coach.user.last_name }}</h4>
+  <div class = "well well-sm">
+    <p><b>Дата рождения:</b> {{ coach.date_of_birth|date:'F j, Y' }}</p>
+    <p><b>Адрес:</b> {{ coach.address|default:"No address provided" }}</p>
+    <p><b>Почта:</b> {{ coach.user.email }}</a></p>
+    <p><img src = "{% static 'bootstrap/images/skypeic.png' %}"> {{ coach.skype }}</p>
+    <p><b>Учитель на курсах:</b></p>
+      {% for course in coach.coach.all %}
+      <p><a href="{% url 'courses:courses' course.id %}">{{ course.name }}</a></br></p>
+      {% empty %}
+      <p>{{ coach.user.first_name }} не является инструктором ни на одном из курсов</p>
+      {% endfor %}
+    <p><b>Ассистент на курсах:</b></p>
+      {% for course in coach.assistant.all %}
+      <a href="{% url 'courses:courses' course.id %}">{{ course.name }}</a></br>
+      {% empty %}
+      <p>{{ coach.user.first_name }} не является ассистентом ни на одном из курсов</p>
+      {% endfor %}
+  </div>
+</div>
+
+
+{% endblock main_content %}
