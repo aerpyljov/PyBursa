@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Students_all{% endblock %}
+
+{% block nav_class_students %}active{% endblock %}
+
+{% block main_content %}
+
+{% block message_button %}{% endblock %}      
+
+  <div class="page-header">
+    <h2 style="color: #446785">{% block page_header %}{% endblock %}</h2>
+  </div>
+  
+    {% block page_content %}
+    {% endblock page_content %}
+
+  </div>
+{% endblock main_content %}
