@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+
+{% block title %}{{ student.surname|title }} {{ student.name|title }}{% endblock %}
+
+
+{% block nav_header %}Ooniversity > {{ student.surname|title }} {{ student.name|title }}{% endblock %}
+
+
+{% block main_content %}
+
+      <!-- Student Information -->
+
+      <div class="jumbotron">
+        <h1>{{ student.surname|upper }} {{ student.name|upper }}</h1>
+      </div>
+
+      <div class="panel panel-default">
+
+        <!-- Table -->
+        <table class="table">
+          <tbody>
+
+
+{% include "includes/inc_person_detail.html" with person=student person_mail=student.email %}
+
+
+            <tr>
+              <th><h2  align="right">Курсы:</h2></th>
+              <th>
+                {% for stud_course in student.courses.all %}
+                    <a href="{% url 'courses:course-coaches' stud_course.id %}">
+                      <big><big><big>{{ stud_course.title }}</big></big></big>
+                    </a>
+                    <br>
+                {% endfor %}
+              </th>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+{% endblock main_content %}

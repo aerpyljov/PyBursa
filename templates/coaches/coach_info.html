@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+
+{% block title %}{{ coach.full_name|title }}{% endblock %}
+
+
+{% block nav_header %}Ooniversity > {{ coach.full_name|title }}{% endblock %}
+
+
+{% block main_content %}
+
+      <!-- Coach Information -->
+
+      <div class="jumbotron">
+        <h1>{{ coach.full_name|upper }}</h1>
+      </div>
+
+      <div class="panel panel-default">
+
+        <!-- Table -->
+        <table class="table">
+          <tbody>
+
+
+{% include "includes/inc_person_detail.html" with person=coach person_mail=coach.user_email %}
+
+
+{% include "includes/inc_course_instructor.html" with block_title='учитель' instructors=coach.coach %}
+
+
+{% include "includes/inc_course_instructor.html" with block_title='ассистент' instructors=coach.assistant %}
+
+
+          </tbody>
+        </table>
+
+      </div>
+
+{% endblock main_content %}
