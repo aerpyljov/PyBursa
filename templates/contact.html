@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Contact | DJ101
+{% endblock %}
+
+
+{% block navigation %}
+  <li><a href={% url "home" %}>Home</a></li>
+  <li><a href="{% url "students:list" %}">Students</a></li>
+  <li><a class="active" href={% url "contact" %}>Contact</a></li>
+{% endblock %}
+
+{% block content %} 
+  <h1 class="cover-heading">Contact</h1>
+  <img src="{% static 'img/wazzup.gif' %}"/>
+  <p class="lead">somemail@somemail.com</p>
+  <p class="lead">+012 34 567 89 01</p>
+{% endblock %}
+         

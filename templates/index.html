@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  DJ101 | Django Courses
+{% endblock %}
+
+
+{% block navigation %}
+  <li class="active"><a href={% url "home" %}>Home</a></li>
+  <li><a href="{% url "students:list" %}">Students</a></li>
+  <li><a href={% url "contact" %}>Contact</a></li>
+{% endblock %}
+
+{% block content %}  
+<h1 class="cover-heading">Awesome Django Cources</h1>
+<p class="lead">Tart ice cream lemon drops chocolate bar lemon drops marzipan cookie cake. Toffee candy canes pudding tiramisu gummies gummi bears. Tiramisu macaroon sugar plum cheesecake cake candy canes muffin dragée cotton candy.</p>
+<p class="lead">
+  <a href="{% url 'quadratic:home' %}" class="btn btn-lg btn-default">Try Quadratic Equation Solver!</a>
+</p>
+{% endblock %}
+          
