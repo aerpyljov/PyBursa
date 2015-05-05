@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+
+{% block title %} PythonClasses | Главная |{% endblock %}
+
+
+{% block nav_class_main %} active {% endblock %}
+
+
+{% block content %}
+  <div class="container" style="margin-bottom:30px">
+    <div class = jumbotron>
+      <h1>PythonClasses</h1>
+      <p class="text">
+        Преимуществом наших курсов над остальными является индивидуальный подход к каждому студенту и 
+        онлайн консультирование в skype
+      </p>
+    </div>
+
+      {% if messages %}
+          <p class="messages">
+              {% for message in messages %}
+                  <div class="alert alert-success" role="alert">{{ message }}</div>
+              {% endfor %}
+          </p>
+      {% endif %}
+
+      <a href="{% url 'courses:add_course' %}">
+        <button class="btn btn-primary" type="button">
+          <span class="glyphicon glyphicon-plus"> </span> Добавить курс
+        </button>
+      </a>
+
+    <table>
+    <caption><h2>Выбери курсы, которые хочешь освоить:</h2></caption>
+      <tbody>
+        <tr>
+          <th>
+            Курс
+          </th>
+          <th>
+            Описание
+          </th>
+          <th>
+              
+          </th>
+        </tr>
+        {% for course in courses %}
+        <tr>
+          <td><a href="{% url 'courses:courseinfo' forloop.counter %}">{{ course.title|upper }}</a>
+          </td>
+          <td>
+            {{ course.about }}
+          </td>
+          <td>
+            <p>
+            <a href="{% url 'courses:edit_course' course.id %}">
+              <button class="btn btn-primary" type="button">
+                <span class="glyphicon glyphicon-pencil"> </span> Изменить
+              </button>
+            </a>
+            </p>
+            <p>
+            <a href="{% url 'courses:delete_course' course.id %}">
+              <button class="btn btn-primary" type="button">
+                <span class="glyphicon glyphicon-erase"> </span> Удалить
+              </button>
+            </a>
+            </p>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div><!-- /.container -->
+{% endblock %}

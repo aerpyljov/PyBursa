@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+
+{% block title %} PythonClasses | Список студентов |{% endblock %}
+
+
+{% block nav_class_student %} active {% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+    <div class="jumbotron">
+
+      {% if messages %}
+          <p class="messages">
+              {% for message in messages %}
+                  <div class="alert alert-success" role="alert">{{ message }}</div>
+              {% endfor %}
+          </p>
+      {% endif %}
+
+      <a href="{% url 'students:student_add' %}">
+        <button class="btn btn-primary" type="button">
+          <span class="glyphicon glyphicon-plus"> </span> Добавить студента
+        </button>
+      </a>
+    <table>
+      <caption><h2>Список студентов:</h2></caption
+      <tbody>
+        <tr>
+          <th>
+              #
+          </th>
+          <th>
+              Фамилия Имя
+          </th>
+          <th>
+              Адрес
+          </th>
+          <th>
+              Skype
+          </th>
+          <th>
+              Курсы
+          </th>
+          <th>
+              
+          </th>
+        </tr>
+        {% for student in student_list %}
+        <tr>
+          <td> 
+            {{ forloop.counter0|add:page_obj.start_index  }}
+          </td>
+          <td>
+              <a href="{% url 'students:student_detail' student.id %}">{{student.surname}} {{student.name|truncatechars:4}}</a>
+          </td>
+          <td class="address">
+              {{ student.address }}
+          </td>
+          <td>
+              {{ student.skype|default:"---------" }}
+          </td>
+          <td>
+            {% for course in student.courses.all %}
+              <p>
+              <a href="{% url 'courses:courseinfo' course.id %}">{{course.title}}</a>
+              </p>
+            {% endfor %}
+          </td>
+          <td>
+            <p>
+            <a href="{% url 'students:edit_student' student.id %}">
+              <button class="btn btn-primary" type="button">
+                <span class="glyphicon glyphicon-pencil"> </span> Изменить
+              </button>
+            </a>
+            </p>
+            <p>
+            <a href="{% url 'students:delete_student' student.id %}">
+              <button class="btn btn-primary" type="button">
+                <span class="glyphicon glyphicon-erase"> </span> Удалить
+              </button>
+            </a>
+            </p>
+          </td>
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
+
+      {% if is_paginated %}
+        <nav>
+          <ul class="pagination">
+
+            {% if page_obj.has_previous %}
+              <li><a href="{{ pagination_prefix }}page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% endif %}
+
+            {% for page in page_obj.paginator.page_range %}
+              {% if page == page_obj.number %}
+                <li class="active"><a href="{{ pagination }}page={{ page }}">{{ page }}</a></li>
+              {% else %}
+                <li><a href="{{ pagination_prefix }}page={{ page }}">{{ page }}</a></li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <li><a href="{{ pagination_prefix }}page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+
+          </ul>
+        </nav>
+      {% endif %}
+
+    </div>
+  </div><!-- /.container -->
+
+{% endblock content %}

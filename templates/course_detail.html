@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+
+
+{% block title %} PythonClasses | {{ course.title }} | Про курс |{% endblock %}
+
+
+{% block idcourse %}?course_id={{ course.id }}{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+  <div class="jumbotron">
+
+      {% if messages %}
+        <p class="messages">
+          {% for message in messages %}
+            <div class="alert alert-success" role="alert">{{ message }}</div>
+          {% endfor %}
+        </p>
+      {% endif %}
+
+      <div class="col">
+
+        <a href="{% url 'courses:lesson_add' course.id %}">
+          <button class="btn btn-primary" type="button">
+            <span class="glyphicon glyphicon-plus"> </span> Добавить занятие
+          </button>
+        </a>
+        <h1>{{ course.title }}</h1>
+
+      </div>
+      
+    <p class="text">
+      {{ course.more_info }}    
+    </p>
+
+    <h2>Преподаватели:</h2><p></p>
+
+
+{% include "inc_coach_name_about.html" with block_title="Учитель" position=course.coach %}
+{% include "inc_coach_name_about.html" with block_title="Ассистент" position=course.assistant %}
+
+
+  <table>
+    <caption><h2>План курса:</h2></caption>
+    <tbody>
+      <tr>
+        <th>
+         #  
+        </th>
+        <th>
+          Тема 
+        </th>
+        <th>
+          Описание
+        </th>
+      </tr>
+      {% for lesson in lessons%}
+      <tr>
+        <td>
+          {{ forloop.counter }}
+        </td>
+        <td class="wide">
+          {{ lesson.theme }}
+        </td>
+        <td class="just">
+          {{ lesson.about }}
+        </td>
+      </tr>
+      {% endfor %}   
+    </tbody>
+  </table>
+  </div>
+</div><!-- /.container -->
+
+
+{% endblock content %}
