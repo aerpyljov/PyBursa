@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+
+{% block title %}PyBursa Contacts{% endblock title %}
+
+
+{% block nav_class_contacts %}active{% endblock %}
+
+
+{% block main_content %}
+
+<!-- CONTACTS GRID
+==================================================== -->
+<!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+	<h2 align="center">PyBursa Организаторы</h2>
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'img/photo_2.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Анна Малахова</h2>
+          <span style="font-size:20px">Менеджер ITbursa</span>
+          <ul>
+	    <li>Email: anna.itbursa@gmail.com</li>
+	    <li>Skype: anechka.malakhova</li>
+	    <li>Phone: +38 096 070 53 47</li>
+	  </ul>
+      </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'img/photo_1.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Павел Обод</h2>
+	  <span style="font-size:20px">Основатель ITbursa</span>
+	  <ul>
+	    <li>Email: itbursa100@gmail.com</li>
+	    <li>Skype: azaless</li>
+	    <li>Phone: +38 063 702 3 703</li>
+	  </ul>
+      </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'img/photo_3.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Татьяна Колесник</h2>
+	  <span style="font-size:20px">Оплата курсов</span>
+	  <ul>
+	    <li>Email: tatyana@outsource-people.com</li>
+	    <li>Skype: princessataniakolesnik</li>
+	    <li>Phone: +38 063 729 45 67</li>
+	  </ul>
+         </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+    </div>
+<!-- CONTACTS GRID
+==================================================== END -->  
+
+{% endblock main_content %}

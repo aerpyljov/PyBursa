@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+
+{% block title %}Python/Django - Main Page{% endblock title %}
+
+
+{% block nav_class_index %}active{% endblock %}
+
+
+{% block main_content %}
+
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+
+<div class="panel panel-default">
+
+
+
+				<!-- Default panel contents -->
+				<div class="panel-heading">Список курсов от PyBurs'ы</div>
+
+				<!-- Table -->
+				<table class="table">
+					<tr>
+						<th>Курс</th>
+    				<th>Описание</th>
+            <th></th>
+            <th></th>
+					</tr>
+{% for course in courses %}
+					<tr>
+						
+						<td><a href="{% url 'courses:courses' course.id %}">{{course.name}}</a></td>
+						<td>{{course.short_description}}</td>
+						<td><a href="{% url 'courses:edit_course' course.id %}" class="glyphicon glyphicon-pencil btn btn-info">Изменить</a></td>
+            <td><a href="{% url 'courses:remove_course' course.id %}" class="glyphicon glyphicon-remove btn btn-info">Удалить</a></td>						
+					</tr>
+{% endfor %}					
+				</table>
+                        
+			</div><p><a href="{% url 'courses:add_course' %}" class="glyphicon glyphicon-plus btn btn-info">Добавить новый курс</a></p>
+<hr class="featurette-divider">
+
+		</div>
+	
+<!--TABLE
+====================================================END-->
+
+   
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+	<h3 align="center">Запишитесь на курсы если вы...</h3>
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'img/face_one.png' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Начинающий</h2>
+          <span style="font-size:20px">Разработчик</span>
+          <ul>
+	    <li>начать IT-карьеру основы веб<br>разработки на базе Python</li>
+	    <li>окупить обучение первой ЗП</li>
+	    <li>получить работу при выпуске</li>
+	  </ul>
+      </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'img/face_two.png' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Опытный</h2>
+	  <span style="font-size:20px">Разработчик</span>
+	  <ul>
+	  <li>переключиться на новый язык,<br>сколько знаешь языков - столько<br>раз ты программист</li>
+	  <li> быстрый старт новой технологии</li>
+	  </ul>
+      </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{% static 'img/face_three.png' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>HR, PM</h2>
+	  <span style="font-size:20px">Специалист</span>
+	  <ul align="left">
+	    <li>понимать, что делают<br>программисты</li>
+	    <li>уметь делать простые сайты</li>
+	    <li>дополнительная профессия</li>
+	  </ul>
+         </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Как все будет</h2>
+          <p class="lead"> В этом курсе мы сместили акцент в сторону практики.
+
+Будет умеренное количество теории - максимум практики.
+
+Примерное соотношение теории и практики: 30% на 70%
+
+Курсы будут проходить с 25 февраля по 23 апреля.
+
+Практические занятия в аудитории + видеозаписи скринкастов. </p>
+        </div>
+        <div class="col-md-5">
+          <img data-holder-rendered="true" src="{% static 'img/python_coding.png' %}" class="featurette-image img-responsive center-block" alt="500x500">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+	  <h2 class="featurette-heading">А найду ли я работу в Харькове на Python?</h2>
+          <h3>Спрос на Python разработку впечатляет!</h3>
+          <p class="lead"> Это не сложно проверить, если вы зайдете на любой сайт работы или
+просто наберете "Python Харьков".<br>В Украине этот язык только набирает популярность у компаний, но уже
+сейчас существует колоссальная нехватка специалистов.<br>Кроме того, Python разработчики зарабатывают обычно в полтора раза больше, чем PHP программисты. </p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img data-holder-rendered="true" src="{% static 'img/graph.jpg' %}" class="featurette-image img-responsive center-block" alt="500x500">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Где, как, когда</h2>
+	  <h3>Оффлайн занятия + видеозаписи скринкастов</h3>
+          <p class="lead">Двухчасовые практические занятия в аудитории будут
+проходить по средам с 19:00 до 21:00.
+При этом практические занятия будут сопровождаться
+онлайн трансляцией в Интернете с возможностью
+"присутствовать удаленно" и задавать вопросы.
+Видеозаписи скринкастов будут предоставляться для
+изучения в воскресенье.
+Дважды в неделю будут выдаваться обязательные ДЗ.
+Одно из ДЗ будет выполняться на практическом занятии
+в аудитории.</p>
+        </div>
+        <div class="col-md-5">
+          <img data-holder-rendered="true" src="{% static 'img/class_project.jpg' %} " class="featurette-image img-responsive center-block" alt="500x500">
+        </div>
+      </div>
+
+      <!-- /END THE FEATURETTES -->
+
+{% endblock main_content %}

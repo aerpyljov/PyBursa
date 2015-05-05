@@ -1,0 +1,82 @@
+{% extends "students/base.html" %}
+
+
+{% load staticfiles %}
+
+
+{% block title %}Course Detail{% endblock title %}
+
+
+{% block goToStudentCourse %} "{% url 'students:students' %}?course_id={{course.id}}" {% endblock %}
+
+
+{% block nav_class_students %}{% endblock %}
+
+
+{% block main_content %}
+
+
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
+
+
+<div class="jumbotron">
+  			<div class="container">
+
+					<h1>{{ course.name }}</h1>
+ 				  <p>{{ course.description|truncatechars:158 }}</p>
+  				
+    
+  			</div>
+		
+</div>
+
+<div class='container'>
+	<h2>Преподаватели</h2>
+	<!-- 
+	TEACHER START
+	-->
+{% if course.coach %}
+{% include "courses/inc_instructor.html" with block_title="Учитель" instructor=coach %}
+{% endif %}
+	<!-- 
+	TEACHER START
+	-->
+
+	<!-- 
+	ASSISTANT START
+	-->
+{% if course.assistant %}	
+{% include "courses/inc_instructor.html" with block_title="Ассистент" instructor=assistant %}
+{% endif %}	
+	<!-- 
+	ASSISTANT START
+	-->
+</div>
+<!--TABLE
+====================================================-->
+<div class="container"><h3>План курса</h3>
+<p><a href="{% url 'courses:add_lesson' course.id %}" class="glyphicon glyphicon-plus btn btn-info">Добавить занятие</a></p>
+<div class="panel panel-default">
+	
+  <!-- Default panel contents -->
+  
+<table class="table">
+					<tr>
+						<th>#</th>
+    				<th>Урок</th>
+						<th>Описание</th>
+					</tr>
+{% for lesson in lessons %}
+					<tr>
+						<td>{{lesson.order_number}}</td>
+						<td>{{lesson.theme}}</td>
+						<td>{{lesson.description}}</td>
+					</tr>
+{% endfor %}						
+				</table>  
+
+</div></div>
+		
+{% endblock main_content %}

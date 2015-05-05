@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> Count Equation </title>
+</head>
+
+<body>
+  
+  <p> Квадратное уравнение a*x*x + b*x + c = 0 </p>
+  
+	<form method="get">
+  {% csrf_token %}
+	{{form.as_p}}
+    <input type="submit" value="Решить" />
+	</form>
+  
+  {% if discriminant or discriminant == 0 %}
+  <p>Дискриминант: {{ discriminant }}</p>
+  {% endif %}
+
+  {% if message %}
+  <p>{{ message }}</p>
+  {% endif %}
+
+</body>
+</html>

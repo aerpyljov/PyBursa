@@ -1,0 +1,24 @@
+{% extends "students/base.html" %}
+
+
+{% block title %}Student Detail{% endblock title %}
+
+
+{% block main_content %}
+
+	<h2>{{st.name}} {{st.surname}}</h2>
+
+
+	<p><b>дата рождения:</b> {{st.date_of_birth|date:"SHORT_DATE_FORMAT"}}</p>
+	<p><b>адрес:</b> {{st.address}}</p>
+	<p><b>почта:</b> {{st.email}}</p>
+	<p><b>логин skype:</b> {{st.skype}}</p>
+	<p><b>телефон:</b> {{st.phone|default:"No number"}}</p>
+	<p><b>Курсы:</b> {% for c in st.courses.all %}
+	<a href="{% url 'courses:courses' c.id %}">{{c|upper}}</a>
+	{% endfor %}
+	</p>
+	
+
+{% endblock main_content %}
+
