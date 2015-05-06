@@ -1,0 +1,46 @@
+li.media, a.button-main { 
+  padding-left: 40px; 
+  }
+
+img.media-object { 
+  width: 130px; 
+  border-style: solid; 
+  border-width: 1px; 
+  border-color: gray; 
+  border-radius: 20px;
+  }
+
+div.jumbotron, div.page-header { 
+  padding-left: 40px; 
+  }
+
+div.table-responsive { 
+  padding: 40px; 
+  }
+
+th.col1 { 
+  width: 150px; 
+  }
+
+table.profile { 
+  padding-left: 10px; 
+  width: 400px; 
+  border-style: solid; 
+  border-width: 1px; 
+  border-color: gray; 
+  border-radius: 20px;
+  display: block;
+  }
+
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+
+
+form { 
+  padding: 40px; 
+  }
+
+ul.messages {
+  color: #5cb85c;
+  }
