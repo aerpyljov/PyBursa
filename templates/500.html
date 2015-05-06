@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Ошибка 500 - Internal Server Error{% endblock %}
+
+{% block nav_class_contact %}class="active"{% endblock %}
+
+
+{% block body %}
+
+    <div class="jumbotron">
+      <h1>Ошибка 500 - Internal Server Error («внутренняя ошибка сервера»)</h1>
+      <p>При обработке Вашего запроса произошла ошибка. Пожалуйста, обновите страницу или перейдите на другие страницы нашего сайта.</p>
+    </div>
+
+{% endblock body %}
