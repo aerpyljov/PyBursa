@@ -1,5 +1,5 @@
 The repository contains my project, that I did on PyBursa cources (http://pybursa.com, 23.02-29.04.2015).
-It is a course for Junior Python Developer.
+It is a course for Junior Python Developers.
 
 
 To run my project, proceed as follows:
@@ -8,8 +8,10 @@ To run my project, proceed as follows:
 
 2. Clone my repository. Pay attention, that my branch is 'a_erpylev', not 'master'!
 
-3. Open a terminal and run 'manage.py' from my project by the following command:
+3. Open a terminal and run 'manage.py' from the folder with my project by the following command:
     python manage.py runserver
 
 4. Open your browser and go to the following page:
     http://127.0.0.1:8000/
+
+5. Enjoy. :-)
