@@ -22,10 +22,10 @@ class CourseDetailView(DetailView):
     context_object_name = 'course'                #Just for Task 9.2
 
     def get_context_data(self, **kwargs):
-        logger.debug('Logging is running in debug mode')
-        logger.info('Before getting context data')
+#        logger.debug('Logging is running in debug mode')
+#        logger.info('Before getting context data')
         context = super(CourseDetailView, self).get_context_data(**kwargs)
-        logger.warning('Before getting course from context data')
+#        logger.warning('Before getting course from context data')
         try:
             course = context['course']
         except KeyError:
@@ -93,8 +93,8 @@ class CourseDeleteView(DeleteView):
         return response
 
 
-def lesson_add(request, course_id):
-    course = get_object_or_404(Course, pk=course_id)
+def lesson_add(request, pk):
+    course = get_object_or_404(Course, pk=pk)
     page_title = u'Создание нового занятия для курса "{0}"'.format(course.name)
     if request.method == 'POST':
         form = LessonForm(request.POST)
@@ -106,7 +106,7 @@ def lesson_add(request, course_id):
             messages.success(request, 
                              u'Занятие "{0}" успешно добавлено'\
                               .format(new_lesson.theme))
-            return redirect('courses:course_detail', course_id=course_id)
+            return redirect('courses:course_detail', pk=pk)
         else:
             return render(request, 'add_edit.html', {'form': form, 'page_title':page_title})
     else:

@@ -41,11 +41,11 @@ class StudentDetailView(DetailView):
     model = Student
 
     def get_context_data(self, **kwargs):
-        logger.debug('Logging is running in debug mode')
-        logger.info('Before getting context data')
+#        logger.debug('Logging is running in debug mode')
+#        logger.info('Before getting context data')
         context = super(StudentDetailView, self).get_context_data(**kwargs)
-        logger.warning('Context data exist!')
-        logger.error('Everything is correct, but we need the error message for task 11')
+#        logger.warning('Context data exist!')
+#        logger.error('Everything is correct, but we need the error message for task 11')
         return context
 
 class StudentCreateView(CreateView):
